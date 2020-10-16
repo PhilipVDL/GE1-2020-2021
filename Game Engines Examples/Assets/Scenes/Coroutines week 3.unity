@@ -470,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225839543}
   - component: {fileID: 1225839542}
+  - component: {fileID: 1225839544}
   m_Layer: 0
   m_Name: spawner
   m_TagString: Untagged
@@ -484,7 +485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225839541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf3165fbebcee034ebaff0455426f41c, type: 3}
   m_Name: 
@@ -505,6 +506,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225839544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225839541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b76d4e77e63a9240b3588d1dc2a3921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tank: {fileID: 6228200176006616429, guid: 7509b15d1315fb24782fb234a7ecdd73, type: 3}
+  radius: 10
+  spawnDelay: 1
+  maxSpawns: 5
 --- !u!1 &1310583475
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +651,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1081215067}
   bulletPrefab: {fileID: 1850118630018322559, guid: c060ee05cdf4e1b408c057f1877b2636,
     type: 3}
+  fireRate: 3
 --- !u!1 &1410947404
 GameObject:
   m_ObjectHideFlags: 0
