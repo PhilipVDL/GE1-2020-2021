@@ -9,20 +9,33 @@ public class Shooting : MonoBehaviour
 
     public float fireRate = 3;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private IEnumerator coroutine;
 
-    // Update is called once per frame
+   
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            coroutine = FireRateCoroutine(fireRate);
+            StartCoroutine(coroutine);
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            //StopAllCoroutines();
+            StopCoroutine(coroutine);
+        }
+    }
+
+    IEnumerator FireRateCoroutine(float rate)
+    {
+        while (true)
+        {
             GameObject bullet = GameObject.Instantiate<GameObject>(bulletPrefab);
             bullet.transform.position = spawnPoint.position;
             bullet.transform.rotation = this.transform.rotation;
+            Debug.Log("run");
+            yield return new WaitForSeconds(1 / rate);
         }
     }
 }
