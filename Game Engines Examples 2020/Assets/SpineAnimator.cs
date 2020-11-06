@@ -10,18 +10,22 @@ public class SpineAnimator : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Cursor.visible = false; //hides cursor
+        Cursor.visible = false;
+        // This iterates through all the children transforms
         for (int i = 0; i < transform.childCount; i++)
         {
-            Transform current = transform.GetChild(i); //tracks transform of current object
+            Transform current = transform.GetChild(i);
             if (i > 0)
             {
-                Transform prev = transform.GetChild(i - 1); //tracks transform of object just before this object
-                Vector3 offset = current.transform.position - prev.transform.position; //calculates distance between the two objects
-                offset = Quaternion.Inverse(prev.transform.rotation) * offset; //calculates the inverse of the previous objects rotation, multiplied by the distance between them
-                offsets.Add(offset);                //adds it to the list of offsets
+                Transform prev = transform.GetChild(i - 1);
+                // Offset from previous to current
+                Vector3 offset = current.transform.position - prev.transform.position; 
+                
+                // Rotating from world back to local
+                offset = Quaternion.Inverse(prev.transform.rotation) * offset;
+                offsets.Add(offset);                
             }            
-            children.Add(current); //adds current object to list of children
+            children.Add(current);
         }
     }
 
@@ -32,16 +36,18 @@ public class SpineAnimator : MonoBehaviour {
         {
             Transform prev = children[i - 1];
             Transform current = children[i];
-            Vector3 wantedPosition = prev.position + ((prev.rotation * offsets[i-1])); //previous objects position added to it's rotation multiplied by it's offset value
-            Quaternion wantedRotation = Quaternion.LookRotation(prev.transform.position - current.position, prev.transform.up); //calulates the rotationn needed to look at the previous object
+            Vector3 wantedPosition = prev.position + ((prev.rotation * offsets[i-1]));
+            Quaternion wantedRotation = Quaternion.LookRotation(prev.transform.position - current.position, prev.transform.up);
 
-            Vector3 lerpedPosition = Vector3.Lerp(current.position, wantedPosition, Time.deltaTime * damping); //lerps between current pos and wanted pos, speed affected by damping
-            Vector3 clampedOffset = lerpedPosition - prev.position; //calculate distance between segments
-            clampedOffset = Vector3.ClampMagnitude(clampedOffset, offsets[i-1].magnitude); //clamp max distance between segments
-            current.position = prev.position + clampedOffset; //keep segments within max distance
+            Vector3 lerpedPosition = Vector3.Lerp(current.position, wantedPosition, Time.deltaTime * damping);
+            
+            // Dont move the segments too far apart
+            Vector3 clampedOffset = lerpedPosition - prev.position;
+            clampedOffset = Vector3.ClampMagnitude(clampedOffset, offsets[i-1].magnitude);
+            current.position = prev.position + clampedOffset;
 
 
-            current.rotation = Quaternion.Slerp(current.rotation, wantedRotation, Time.deltaTime * damping); //rotates segments appropriately
+            current.rotation = Quaternion.Slerp(current.rotation, wantedRotation, Time.deltaTime * damping);
         }
     }
 }
