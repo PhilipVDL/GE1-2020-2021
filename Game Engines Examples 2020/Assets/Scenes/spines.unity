@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTentacles: 8
-  radius: 1
+  radius: 1.5
   tentaclePrefab: {fileID: 8495000044086470961, guid: 9e13b2d1609a01249932f1b28460f182,
     type: 3}
 --- !u!4 &85886657
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTentacles: 8
-  radius: 1
+  radius: 1.5
   tentaclePrefab: {fileID: 8495000044086470961, guid: 9e13b2d1609a01249932f1b28460f182,
     type: 3}
 --- !u!4 &1071317449
@@ -859,6 +859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495000044086470961, guid: 9e13b2d1609a01249932f1b28460f182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8495000044086470962, guid: 9e13b2d1609a01249932f1b28460f182,
         type: 3}
@@ -998,7 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTentacles: 8
-  radius: 1
+  radius: 1.5
   tentaclePrefab: {fileID: 8495000044086470961, guid: 9e13b2d1609a01249932f1b28460f182,
     type: 3}
 --- !u!4 &1851455584
@@ -1061,7 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numTentacles: 8
-  radius: 1
+  radius: 1.5
   tentaclePrefab: {fileID: 8495000044086470961, guid: 9e13b2d1609a01249932f1b28460f182,
     type: 3}
 --- !u!4 &1865286849
